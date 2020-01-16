@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base href="." />
+    <script>
+      let angularElement;
+      function toggleAngular() {
+        const paramValue = "It Works!";
+        const target = document.getElementById("angularRoot");
+        if (target.children.length) {
+          target.removeChild(target.children[0]);
+        }
+        if (target.style.display === "none") {
+          angularElement = document.createElement("app-root");
+
+          angularElement.setAttribute("param", paramValue);
+          angularElement.addEventListener("onEmit", e => alert(e.detail));
+
+          target.appendChild(angularElement);
+
+          target.style.display = "block";
+        } else {
+          target.style.display = "none";
+        }
+      }
+
+      function setRandomParam() {
+        if (angularElement) {
+          angularElement.setAttribute("param", +new Date());
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Simple Project</h1>
+    <button onclick="toggleAngular();">Toggle Angular</button>
+    <button onclick="setRandomParam();">Set Random Param</button>
+
+    <div id="angularRoot" style="display: none;"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/zone.js/0.9.1/zone.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/2.2.10/custom-elements-es5-adapter.js"></script>
+    <script type="text/javascript" src="http://localhost:8081/main.js"></script>
+  </body>
+</html>

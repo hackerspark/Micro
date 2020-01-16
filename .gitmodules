@@ -1,0 +1,3 @@
+[submodule "AngularProject/angular-project"]
+	path = AngularProject/angular-project
+	url = https://github.com/hackerspark/SimpleMicroFrameworkAngular.git
